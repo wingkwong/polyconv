@@ -1,0 +1,36 @@
+{
+  "name": "@polyconv/root",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "author": "WK Wong <wingkwong.code@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wingkwong/polyconv.git"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@11.9.0",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "test": "turbo test",
+    "lint": "turbo lint",
+    "typecheck": "turbo typecheck",
+    "format": "prettier --write \"**/*.{ts,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,json,md}\"",
+    "clean": "turbo clean && rm -rf node_modules .turbo",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.8",
+    "oxlint": "^1.72.0",
+    "prettier": "^3.9.4",
+    "tsup": "^8.5.1",
+    "turbo": "^2.10.3",
+    "typescript": "^6.0.3"
+  }
+}
