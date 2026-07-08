@@ -1,6 +1,6 @@
 {
   "name": "@polyconv/json",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "JSON converter for polyconv - convert JSON to XML, YAML, and more",
   "keywords": [

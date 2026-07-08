@@ -1,6 +1,9 @@
 # @polyconv/core
 
-Core types, errors, and validation helpers for building Polyconv converters.
+Core types, errors, and validation helpers for building Polyconv.
+
+[![npm version][npm-version-src]][npm-version-href]
+[![License][license-src]][license-href]
 
 ## Installation
 
@@ -117,3 +120,10 @@ try {
 ## License
 
 MIT
+
+<!-- Badges -->
+
+[npm-version-src]: https://img.shields.io/npm/v/@polyconv/core?style=flat&colorA=080f12&colorB=1fa669
+[npm-version-href]: https://npmx.dev/package/@polyconv/core
+[license-src]: https://img.shields.io/github/license/wingkwong/polyconv.svg?style=flat&colorA=080f12&colorB=1fa669
+[license-href]: https://github.com/wingkwong/polyconv/blob/develop/packages/core/LICENSE

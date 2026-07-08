@@ -1,6 +1,9 @@
 # @polyconv/cli
 
-Command-line interface for Polyconv. The current CLI focuses on JSON input: convert JSON to XML or YAML, format JSON, and minify JSON.
+Command-line interface for Polyconv.
+
+[![npm version][npm-version-src]][npm-version-href]
+[![License][license-src]][license-href]
 
 ## Installation
 
@@ -240,3 +243,10 @@ pnpm unlink --global
 ## License
 
 MIT
+
+<!-- Badges -->
+
+[npm-version-src]: https://img.shields.io/npm/v/@polyconv/cli?style=flat&colorA=080f12&colorB=1fa669
+[npm-version-href]: https://npmx.dev/package/@polyconv/cli
+[license-src]: https://img.shields.io/github/license/wingkwong/polyconv.svg?style=flat&colorA=080f12&colorB=1fa669
+[license-href]: https://github.com/wingkwong/polyconv/blob/develop/packages/cli/LICENSE
