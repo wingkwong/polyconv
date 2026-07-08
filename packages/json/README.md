@@ -2,6 +2,9 @@
 
 JSON conversion and formatting utilities for Polyconv. It converts JSON strings to XML or YAML and also formats or minifies JSON.
 
+[![npm version][npm-version-src]][npm-version-href]
+[![License][license-src]][license-href]
+
 ## Installation
 
 ```bash
@@ -169,3 +172,10 @@ All helpers accept JSON as a string and throw `ConversionError` for invalid or e
 ## License
 
 MIT
+
+<!-- Badges -->
+
+[npm-version-src]: https://img.shields.io/npm/v/@polyconv/json?style=flat&colorA=080f12&colorB=1fa669
+[npm-version-href]: https://npmx.dev/package/@polyconv/json
+[license-src]: https://img.shields.io/github/license/wingkwong/polyconv.svg?style=flat&colorA=080f12&colorB=1fa669
+[license-href]: https://github.com/wingkwong/polyconv/blob/develop/packages/json/LICENSE
