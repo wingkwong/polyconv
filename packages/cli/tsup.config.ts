@@ -8,7 +8,7 @@ export default defineConfig({
   treeshake: true,
   splitting: false,
   sourcemap: true,
-  minify: false,
+  minify: true,
   target: "esnext",
   skipNodeModulesBundle: true,
   external: ["@polyconv/core", "@polyconv/json"],
