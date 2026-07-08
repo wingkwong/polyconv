@@ -1,6 +1,17 @@
-# Polyconv
+<br>
+<p align="center">
+<img width="250" height="250" alt="polyconv" src="https://github.com/user-attachments/assets/5242709b-8f13-40f0-a99e-2469566d9bb8" />
+</p>
 
-Polyconv is a modular toolkit for converting and formatting structured data from the command line or TypeScript.
+<p align="center">
+A modular toolkit for converting and formatting structured data from the command line or TypeScript.
+</p>
+
+<p align="center">
+<a href="https://www.npmjs.com/package/@polyconv/core" target="__blank"><img src="https://img.shields.io/npm/v/@polyconv/core?color=FF6B6B&label=core" alt="@polyconv/core version"></a>
+<a href="https://www.npmjs.com/package/@polyconv/json" target="__blank"><img src="https://img.shields.io/npm/v/@polyconv/json?color=1ABC9C&label=json" alt="@polyconv/json version"></a>
+<a href="https://www.npmjs.com/package/@polyconv/cli" target="__blank"><img src="https://img.shields.io/npm/v/@polyconv/cli?color=FFC300&label=cli" alt="@polyconv/cli version"></a>
+</p>
 
 ## Features
 
