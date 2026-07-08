@@ -1,6 +1,6 @@
 # @polyconv/core
 
-Core types, errors, and validation helpers for building Polyconv converters.
+Core types, errors, and validation helpers for building Polyconv.
 
 [![npm version][npm-version-src]][npm-version-href]
 [![License][license-src]][license-href]

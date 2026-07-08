@@ -1,6 +1,6 @@
 # @polyconv/cli
 
-Command-line interface for Polyconv. The current CLI focuses on JSON input: convert JSON to XML or YAML, format JSON, and minify JSON.
+Command-line interface for Polyconv.
 
 [![npm version][npm-version-src]][npm-version-href]
 [![License][license-src]][license-href]
