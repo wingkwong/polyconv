@@ -1,0 +1,145 @@
+# Polyconv
+
+Polyconv is a modular toolkit for converting and formatting structured data from the command line or TypeScript.
+
+## Features
+
+- Fast ESM packages built with tsup and esbuild
+- Modular package layout so consumers can install only what they need
+- TypeScript declarations for public APIs
+- CLI and programmatic APIs
+- Node.js 22+ runtime support
+
+## Packages
+
+- [@polyconv/core/cli](packages/cli) - Command-line interface for JSON conversion, formatting, and minifying
+- [@polyconv/core/core](packages/core) - Core types, errors, and validation helpers for converters
+- [@polyconv/core/json](packages/json) - JSON converters and JSON formatting utilities
+
+## Requirements
+
+- Node.js 22+
+- pnpm 11.9.0 for repository development
+
+## Quick Start
+
+### Installation
+
+```bash
+# Install CLI globally
+pnpm add -g @polyconv/core/cli
+
+# Or use in a project
+pnpm add @polyconv/core/json
+```
+
+Packages are ESM-only.
+
+### CLI Usage
+
+```bash
+# Convert JSON to XML
+polyconv convert input.json --to xml --output output.xml
+
+# Convert JSON to YAML with pretty formatting
+polyconv convert input.json --to yaml --pretty --output output.yaml
+
+# Format JSON
+polyconv format input.json --indent 2 --sort-keys --output formatted.json
+
+# Minify JSON
+polyconv minify input.json --output minified.json
+
+# Read from stdin, write to stdout
+cat input.json | polyconv convert - --to yaml
+```
+
+### Programmatic Usage
+
+```typescript
+import { jsonToXml, jsonToYaml, formatJson } from "@polyconv/core/json";
+
+const jsonData = '{"name": "polyconv", "version": "1.0.0"}';
+
+// Convert to XML
+const xml = jsonToXml(jsonData, {
+  rootName: "package",
+  pretty: true,
+  indent: 2,
+});
+
+// Convert to YAML
+const yaml = jsonToYaml(jsonData, {
+  indent: 2,
+  sortKeys: true,
+});
+
+// Format JSON
+const formatted = formatJson(jsonData, {
+  indent: 4,
+  sortKeys: true,
+});
+```
+
+## Supported Operations
+
+| Input | Output | CLI                                     | API            |
+| ----- | ------ | --------------------------------------- | -------------- |
+| JSON  | XML    | `polyconv convert input.json --to xml`  | `jsonToXml()`  |
+| JSON  | YAML   | `polyconv convert input.json --to yaml` | `jsonToYaml()` |
+| JSON  | JSON   | `polyconv format input.json`            | `formatJson()` |
+| JSON  | JSON   | `polyconv minify input.json`            | `minifyJson()` |
+
+## Development
+
+### Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/wingkwong/polyconv.git
+cd polyconv
+
+# Install dependencies
+pnpm install
+
+# Build all packages
+pnpm build
+```
+
+### Project Structure
+
+```
+polyconv/
+├── packages/
+│   ├── cli/         # Command-line interface
+│   ├── core/        # Core types and utilities
+│   ├── json/        # JSON converter
+│   └── standard/    # Shared TypeScript configs
+├── turbo.json       # Turborepo configuration
+└── pnpm-workspace.yaml
+```
+
+### Commands
+
+```bash
+pnpm dev          # Run all packages in dev mode
+pnpm build        # Build all packages
+pnpm lint         # Lint all packages
+pnpm typecheck    # Type check all packages
+pnpm test         # Run all tests
+pnpm format:check # Check Prettier formatting
+pnpm format       # Format code with Prettier
+pnpm clean        # Clean build artifacts
+```
+
+CI runs formatting, linting, type checking, build, and tests on pushes and pull requests to
+`develop` and `main`. Use `develop` as the default integration branch and `main` as the
+production branch.
+
+## Contributing
+
+Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details.
+
+## License
+
+MIT

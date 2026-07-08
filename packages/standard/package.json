@@ -1,0 +1,17 @@
+{
+  "name": "@polyconv/standard",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "author": "WK Wong <wingkwong.code@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wingkwong/polyconv.git"
+  },
+  "exports": {
+    "./tsconfig/base.json": "./tsconfig/base.json"
+  },
+  "files": [
+    "tsconfig"
+  ]
+}
