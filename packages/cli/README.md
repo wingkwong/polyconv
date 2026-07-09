@@ -28,6 +28,9 @@ polyconv convert input.json --to xml --output output.xml
 # Convert JSON to YAML
 polyconv convert input.json --to yaml --output output.yaml
 
+# Convert JSON to TOML
+polyconv convert input.json --to toml --output output.toml
+
 # Format JSON
 polyconv format input.json --indent 2 --sort-keys --output formatted.json
 
@@ -86,6 +89,7 @@ polyconv convert <input> [options]
 - `-t, --to <format>` - Target format (required)
   - `xml` - Convert to XML
   - `yaml`, `yml` - Convert to YAML
+  - `toml` - Convert to TOML
   - `format` - Format JSON with indentation
   - `minify` - Minify JSON (remove whitespace)
 - `-o, --output <file>` - Output file path (defaults to stdout)
@@ -158,6 +162,18 @@ polyconv convert data.json --to yaml \
   --output data.yaml
 ```
 
+### JSON to TOML
+
+```bash
+# Basic conversion
+polyconv convert data.json --to toml --output data.toml
+
+# With sorted keys
+polyconv convert data.json --to toml \
+  --sort-keys \
+  --output data.toml
+```
+
 ### Format JSON
 
 ```bash
@@ -208,7 +224,7 @@ The CLI provides clear error messages:
 ```bash
 # Invalid format
 $ polyconv convert data.json --to invalid
-✗ Error: Unsupported target format: invalid. Supported formats: xml, yaml, yml, format, minify
+✗ Error: Unsupported target format: invalid. Supported formats: xml, yaml, yml, toml, format, minify
 
 # Invalid JSON
 $ polyconv convert bad.json --to xml

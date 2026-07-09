@@ -1,16 +1,13 @@
 {
-  "name": "@polyconv/cli",
-  "version": "0.2.0",
+  "name": "@polyconv/toml",
+  "version": "0.1.0",
   "type": "module",
-  "description": "CLI for polyconv - convert between data formats",
+  "description": "TOML converter for polyconv",
   "keywords": [
     "polyconv",
-    "cli",
-    "converter",
+    "toml",
     "json",
-    "xml",
-    "yaml",
-    "toml"
+    "converter"
   ],
   "author": "WK Wong <wingkwong.code@gmail.com>",
   "repository": {
@@ -21,9 +18,7 @@
   "engines": {
     "node": ">=22"
   },
-  "bin": {
-    "polyconv": "./dist/index.js"
-  },
+  "sideEffects": false,
   "main": "./dist/index.js",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -46,13 +41,10 @@
     "clean": "rm -rf dist .turbo"
   },
   "dependencies": {
-    "@polyconv/core": "workspace:*",
-    "@polyconv/json": "workspace:*",
-    "commander": "^13.0.0"
+    "@polyconv/core": "workspace:*"
   },
   "devDependencies": {
     "@polyconv/standard": "workspace:*",
-    "@types/node": "^24.0.3",
     "tsup": "^8.5.1",
     "typescript": "^6.0.3"
   },

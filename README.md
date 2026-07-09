@@ -1,6 +1,18 @@
-# Polyconv
+<br>
+<p align="center">
+<img width="250" height="250" alt="polyconv" src="https://github.com/user-attachments/assets/5242709b-8f13-40f0-a99e-2469566d9bb8" />
+</p>
 
-Polyconv is a modular toolkit for converting and formatting structured data from the command line or TypeScript.
+<p align="center">
+A modular toolkit for converting and formatting structured data from the command line or TypeScript.
+</p>
+
+<p align="center">
+<a href="https://www.npmjs.com/package/@polyconv/core" target="__blank"><img src="https://img.shields.io/npm/v/@polyconv/core?color=FF6B6B&label=core" alt="@polyconv/core version"></a>
+<a href="https://www.npmjs.com/package/@polyconv/json" target="__blank"><img src="https://img.shields.io/npm/v/@polyconv/json?color=1ABC9C&label=json" alt="@polyconv/json version"></a>
+<a href="https://www.npmjs.com/package/@polyconv/toml" target="__blank"><img src="https://img.shields.io/npm/v/@polyconv/toml?color=9B59B6&label=toml" alt="@polyconv/toml version"></a>
+<a href="https://www.npmjs.com/package/@polyconv/cli" target="__blank"><img src="https://img.shields.io/npm/v/@polyconv/cli?color=FFC300&label=cli" alt="@polyconv/cli version"></a>
+</p>
 
 ## Features
 
@@ -12,9 +24,10 @@ Polyconv is a modular toolkit for converting and formatting structured data from
 
 ## Packages
 
-- [@polyconv/core/cli](packages/cli) - Command-line interface for JSON conversion, formatting, and minifying
-- [@polyconv/core/core](packages/core) - Core types, errors, and validation helpers for converters
-- [@polyconv/core/json](packages/json) - JSON converters and JSON formatting utilities
+- [@polyconv/cli](packages/cli) - Command-line interface for JSON conversion, formatting, and minifying
+- [@polyconv/core](packages/core) - Core types, errors, and validation helpers for converters
+- [@polyconv/json](packages/json) - JSON converters and JSON formatting utilities
+- [@polyconv/toml](packages/toml) - TOML converter package
 
 ## Requirements
 
@@ -27,15 +40,15 @@ Polyconv is a modular toolkit for converting and formatting structured data from
 
 ```bash
 # Install CLI globally
-pnpm add -g @polyconv/core/cli
+pnpm add -g @polyconv/cli
 
 # Or use in a project
-pnpm add @polyconv/core/json
+pnpm add @polyconv/json
 ```
 
 Packages are ESM-only.
 
-### CLI Usage
+### CLI Usage (Example)
 
 ```bash
 # Convert JSON to XML
@@ -43,6 +56,9 @@ polyconv convert input.json --to xml --output output.xml
 
 # Convert JSON to YAML with pretty formatting
 polyconv convert input.json --to yaml --pretty --output output.yaml
+
+# Convert JSON to TOML
+polyconv convert input.json --to toml --output output.toml
 
 # Format JSON
 polyconv format input.json --indent 2 --sort-keys --output formatted.json
@@ -54,10 +70,10 @@ polyconv minify input.json --output minified.json
 cat input.json | polyconv convert - --to yaml
 ```
 
-### Programmatic Usage
+### Programmatic Usage (Example)
 
 ```typescript
-import { jsonToXml, jsonToYaml, formatJson } from "@polyconv/core/json";
+import { jsonToXml, jsonToYaml, jsonToToml, formatJson } from "@polyconv/json";
 
 const jsonData = '{"name": "polyconv", "version": "1.0.0"}';
 
@@ -74,21 +90,17 @@ const yaml = jsonToYaml(jsonData, {
   sortKeys: true,
 });
 
+// Convert to TOML
+const toml = jsonToToml(jsonData, {
+  sortKeys: true,
+});
+
 // Format JSON
 const formatted = formatJson(jsonData, {
   indent: 4,
   sortKeys: true,
 });
 ```
-
-## Supported Operations
-
-| Input | Output | CLI                                     | API            |
-| ----- | ------ | --------------------------------------- | -------------- |
-| JSON  | XML    | `polyconv convert input.json --to xml`  | `jsonToXml()`  |
-| JSON  | YAML   | `polyconv convert input.json --to yaml` | `jsonToYaml()` |
-| JSON  | JSON   | `polyconv format input.json`            | `formatJson()` |
-| JSON  | JSON   | `polyconv minify input.json`            | `minifyJson()` |
 
 ## Development
 
@@ -114,6 +126,7 @@ polyconv/
 │   ├── cli/         # Command-line interface
 │   ├── core/        # Core types and utilities
 │   ├── json/        # JSON converter
+│   ├── toml/        # TOML converter package
 │   └── standard/    # Shared TypeScript configs
 ├── turbo.json       # Turborepo configuration
 └── pnpm-workspace.yaml
