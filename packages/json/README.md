@@ -156,29 +156,6 @@ interface FormatOptions {
 }
 ```
 
-## Examples
-
-### CLI Integration
-
-This package is used by `@polyconv/cli`:
-
-```bash
-# Convert JSON to XML
-polyconv convert data.json --to xml --root-name users --pretty
-
-# Convert JSON to YAML
-polyconv convert data.json --to yaml --sort-keys --indent 4
-
-# Convert JSON to TOML
-polyconv convert data.json --to toml --sort-keys --output data.toml
-
-# Format JSON
-polyconv format messy.json --indent 2 --sort-keys
-
-# Minify JSON
-polyconv minify large.json --output small.json
-```
-
 ### Error Handling
 
 ```typescript
