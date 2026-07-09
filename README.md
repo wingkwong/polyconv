@@ -47,7 +47,7 @@ pnpm add @polyconv/json
 
 Packages are ESM-only.
 
-### CLI Usage
+### CLI Usage (Example)
 
 ```bash
 # Convert JSON to XML
@@ -69,7 +69,7 @@ polyconv minify input.json --output minified.json
 cat input.json | polyconv convert - --to yaml
 ```
 
-### Programmatic Usage
+### Programmatic Usage (Example)
 
 ```typescript
 import { jsonToXml, jsonToYaml, jsonToToml, formatJson } from "@polyconv/json";
@@ -100,16 +100,6 @@ const formatted = formatJson(jsonData, {
   sortKeys: true,
 });
 ```
-
-## Supported Operations
-
-| Input | Output | CLI                                     | API            |
-| ----- | ------ | --------------------------------------- | -------------- |
-| JSON  | XML    | `polyconv convert input.json --to xml`  | `jsonToXml()`  |
-| JSON  | YAML   | `polyconv convert input.json --to yaml` | `jsonToYaml()` |
-| JSON  | TOML   | `polyconv convert input.json --to toml` | `jsonToToml()` |
-| JSON  | JSON   | `polyconv format input.json`            | `formatJson()` |
-| JSON  | JSON   | `polyconv minify input.json`            | `minifyJson()` |
 
 ## Development
 
