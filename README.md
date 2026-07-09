@@ -10,6 +10,7 @@ A modular toolkit for converting and formatting structured data from the command
 <p align="center">
 <a href="https://www.npmjs.com/package/@polyconv/core" target="__blank"><img src="https://img.shields.io/npm/v/@polyconv/core?color=FF6B6B&label=core" alt="@polyconv/core version"></a>
 <a href="https://www.npmjs.com/package/@polyconv/json" target="__blank"><img src="https://img.shields.io/npm/v/@polyconv/json?color=1ABC9C&label=json" alt="@polyconv/json version"></a>
+<a href="https://www.npmjs.com/package/@polyconv/toml" target="__blank"><img src="https://img.shields.io/npm/v/@polyconv/toml?color=9B59B6&label=toml" alt="@polyconv/toml version"></a>
 <a href="https://www.npmjs.com/package/@polyconv/cli" target="__blank"><img src="https://img.shields.io/npm/v/@polyconv/cli?color=FFC300&label=cli" alt="@polyconv/cli version"></a>
 </p>
 
