@@ -23,9 +23,10 @@ A modular toolkit for converting and formatting structured data from the command
 
 ## Packages
 
-- [@polyconv/core/cli](packages/cli) - Command-line interface for JSON conversion, formatting, and minifying
-- [@polyconv/core/core](packages/core) - Core types, errors, and validation helpers for converters
-- [@polyconv/core/json](packages/json) - JSON converters and JSON formatting utilities
+- [@polyconv/cli](packages/cli) - Command-line interface for JSON conversion, formatting, and minifying
+- [@polyconv/core](packages/core) - Core types, errors, and validation helpers for converters
+- [@polyconv/json](packages/json) - JSON converters and JSON formatting utilities
+- [@polyconv/toml](packages/toml) - TOML converter package
 
 ## Requirements
 
@@ -38,10 +39,10 @@ A modular toolkit for converting and formatting structured data from the command
 
 ```bash
 # Install CLI globally
-pnpm add -g @polyconv/core/cli
+pnpm add -g @polyconv/cli
 
 # Or use in a project
-pnpm add @polyconv/core/json
+pnpm add @polyconv/json
 ```
 
 Packages are ESM-only.
@@ -54,6 +55,9 @@ polyconv convert input.json --to xml --output output.xml
 
 # Convert JSON to YAML with pretty formatting
 polyconv convert input.json --to yaml --pretty --output output.yaml
+
+# Convert JSON to TOML
+polyconv convert input.json --to toml --output output.toml
 
 # Format JSON
 polyconv format input.json --indent 2 --sort-keys --output formatted.json
@@ -68,7 +72,7 @@ cat input.json | polyconv convert - --to yaml
 ### Programmatic Usage
 
 ```typescript
-import { jsonToXml, jsonToYaml, formatJson } from "@polyconv/core/json";
+import { jsonToXml, jsonToYaml, jsonToToml, formatJson } from "@polyconv/json";
 
 const jsonData = '{"name": "polyconv", "version": "1.0.0"}';
 
@@ -85,6 +89,11 @@ const yaml = jsonToYaml(jsonData, {
   sortKeys: true,
 });
 
+// Convert to TOML
+const toml = jsonToToml(jsonData, {
+  sortKeys: true,
+});
+
 // Format JSON
 const formatted = formatJson(jsonData, {
   indent: 4,
@@ -98,6 +107,7 @@ const formatted = formatJson(jsonData, {
 | ----- | ------ | --------------------------------------- | -------------- |
 | JSON  | XML    | `polyconv convert input.json --to xml`  | `jsonToXml()`  |
 | JSON  | YAML   | `polyconv convert input.json --to yaml` | `jsonToYaml()` |
+| JSON  | TOML   | `polyconv convert input.json --to toml` | `jsonToToml()` |
 | JSON  | JSON   | `polyconv format input.json`            | `formatJson()` |
 | JSON  | JSON   | `polyconv minify input.json`            | `minifyJson()` |
 
@@ -125,6 +135,7 @@ polyconv/
 │   ├── cli/         # Command-line interface
 │   ├── core/        # Core types and utilities
 │   ├── json/        # JSON converter
+│   ├── toml/        # TOML converter package
 │   └── standard/    # Shared TypeScript configs
 ├── turbo.json       # Turborepo configuration
 └── pnpm-workspace.yaml
