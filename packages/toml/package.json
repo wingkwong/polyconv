@@ -1,0 +1,54 @@
+{
+  "name": "@polyconv/toml",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "TOML converter for polyconv",
+  "keywords": [
+    "polyconv",
+    "toml",
+    "json",
+    "converter"
+  ],
+  "author": "WK Wong <wingkwong.code@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wingkwong/polyconv.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "LICENSE"
+  ],
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "test": "pnpm run build && node --test test/**/*.test.mjs",
+    "lint": "oxlint src",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist .turbo"
+  },
+  "dependencies": {
+    "@polyconv/core": "workspace:*"
+  },
+  "devDependencies": {
+    "@polyconv/standard": "workspace:*",
+    "tsup": "^8.5.1",
+    "typescript": "^6.0.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
