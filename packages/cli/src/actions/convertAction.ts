@@ -1,5 +1,5 @@
 import { readInput, writeOutput } from "../utils/io.js";
-import { jsonToXml, jsonToYaml, formatJson, minifyJson } from "@polyconv/json";
+import { jsonToXml, jsonToYaml, jsonToToml, formatJson, minifyJson } from "@polyconv/json";
 import { ConversionError } from "@polyconv/core";
 
 interface ConvertOptions {
@@ -19,7 +19,7 @@ export async function convertAction(input: string, options: ConvertOptions): Pro
     }
 
     const targetFormat = options.to.toLowerCase();
-    const supportedFormats = ["xml", "yaml", "yml", "format", "minify"];
+    const supportedFormats = ["xml", "yaml", "yml", "toml", "format", "minify"];
 
     if (!supportedFormats.includes(targetFormat)) {
       throw new Error(
@@ -50,6 +50,13 @@ export async function convertAction(input: string, options: ConvertOptions): Pro
       case "yml":
         output = jsonToYaml(inputData, {
           pretty,
+          indent,
+          sortKeys: options.sortKeys,
+        });
+        break;
+
+      case "toml":
+        output = jsonToToml(inputData, {
           indent,
           sortKeys: options.sortKeys,
         });

@@ -5,7 +5,7 @@ export function createConvertCommand(): Command {
   return new Command("convert")
     .description("Convert files between formats")
     .argument("<input>", "Input file path or '-' for stdin")
-    .option("-t, --to <format>", "Target format (xml, yaml)")
+    .option("-t, --to <format>", "Target format (xml, yaml, toml)")
     .option("-o, --output <file>", "Output file path (defaults to stdout)")
     .option("-p, --pretty", "Pretty print output", false)
     .option("-i, --indent <number>", "Indentation size", "2")
