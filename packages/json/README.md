@@ -1,6 +1,6 @@
 # @polyconv/json
 
-JSON conversion and formatting utilities for Polyconv. It converts JSON strings to XML or YAML and also formats or minifies JSON.
+JSON conversion and formatting utilities for Polyconv. It converts JSON strings to XML, YAML, or TOML and also formats or minifies JSON.
 
 [![npm version][npm-version-src]][npm-version-href]
 [![License][license-src]][license-href]
@@ -17,6 +17,7 @@ This package is ESM-only and requires Node.js 22+.
 
 - Convert JSON to XML with customizable options
 - Convert JSON to YAML with formatting control
+- Convert JSON to TOML
 - Format and minify JSON
 - Tree-shakeable exports
 - Full TypeScript support
@@ -68,6 +69,21 @@ const converter = new JsonToYamlConverter();
 const result = converter.convert(json, { sortKeys: true });
 ```
 
+### JSON to TOML
+
+```typescript
+import { jsonToToml, JsonToTomlConverter } from "@polyconv/json";
+
+const json = '{"name":"polyconv","config":{"enabled":true}}';
+
+const toml = jsonToToml(json, {
+  sortKeys: true,
+});
+
+const converter = new JsonToTomlConverter();
+const result = converter.convert(json);
+```
+
 ### Format JSON
 
 ```typescript
@@ -116,6 +132,18 @@ interface JsonToYamlOptions {
 }
 ```
 
+### JSON to TOML
+
+```typescript
+jsonToToml(input: string, options?: JsonToTomlOptions): string
+
+interface JsonToTomlOptions {
+  pretty?: boolean;
+  indent?: number;
+  sortKeys?: boolean; // Sort object keys (default: false)
+}
+```
+
 ### Format & Minify
 
 ```typescript
@@ -140,6 +168,9 @@ polyconv convert data.json --to xml --root-name users --pretty
 
 # Convert JSON to YAML
 polyconv convert data.json --to yaml --sort-keys --indent 4
+
+# Convert JSON to TOML
+polyconv convert data.json --to toml --sort-keys --output data.toml
 
 # Format JSON
 polyconv format messy.json --indent 2 --sort-keys
