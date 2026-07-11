@@ -57,8 +57,13 @@ polyconv convert input.json --to xml --output output.xml
 # Convert JSON to YAML with pretty formatting
 polyconv convert input.json --to yaml --pretty --output output.yaml
 
-# Convert JSON to TOML
+# Convert JSON to TOML, CSV, TSV, INI, ENV, Markdown, HTML, or query strings
 polyconv convert input.json --to toml --output output.toml
+polyconv convert input.json --to csv --output output.csv
+polyconv convert input.json --to query
+
+# Convert TOML to JSON
+polyconv convert input.toml --to json --output output.json
 
 # Format JSON
 polyconv format input.json --indent 2 --sort-keys --output formatted.json
@@ -67,13 +72,20 @@ polyconv format input.json --indent 2 --sort-keys --output formatted.json
 polyconv minify input.json --output minified.json
 
 # Read from stdin, write to stdout
-cat input.json | polyconv convert - --to yaml
+cat input.json | polyconv convert - --from json --to yaml
 ```
 
 ### Programmatic Usage (Example)
 
 ```typescript
-import { jsonToXml, jsonToYaml, jsonToToml, formatJson } from "@polyconv/json";
+import {
+  formatJson,
+  jsonToCsv,
+  jsonToQueryString,
+  jsonToToml,
+  jsonToXml,
+  jsonToYaml,
+} from "@polyconv/json";
 
 const jsonData = '{"name": "polyconv", "version": "1.0.0"}';
 
@@ -94,6 +106,12 @@ const yaml = jsonToYaml(jsonData, {
 const toml = jsonToToml(jsonData, {
   sortKeys: true,
 });
+
+// Convert to CSV
+const csv = jsonToCsv('[{"name":"polyconv","version":"1.0.0"}]');
+
+// Convert to a URL query string
+const query = jsonToQueryString('{"q":"polyconv","tag":["json","cli"]}');
 
 // Format JSON
 const formatted = formatJson(jsonData, {
