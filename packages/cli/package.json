@@ -10,7 +10,14 @@
     "json",
     "xml",
     "yaml",
-    "toml"
+    "toml",
+    "csv",
+    "tsv",
+    "ini",
+    "env",
+    "markdown",
+    "html",
+    "querystring"
   ],
   "author": "WK Wong <wingkwong.code@gmail.com>",
   "repository": {
@@ -48,6 +55,7 @@
   "dependencies": {
     "@polyconv/core": "workspace:*",
     "@polyconv/json": "workspace:*",
+    "@polyconv/toml": "workspace:*",
     "commander": "^13.0.0"
   },
   "devDependencies": {

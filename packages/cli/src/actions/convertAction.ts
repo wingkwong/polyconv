@@ -1,25 +1,43 @@
 import { readInput, writeOutput } from "../utils/io.js";
-import { jsonToXml, jsonToYaml, jsonToToml, formatJson, minifyJson } from "@polyconv/json";
+import {
+  formatJson,
+  jsonToCsv,
+  jsonToEnv,
+  jsonToHtmlTable,
+  jsonToIni,
+  jsonToMarkdownTable,
+  jsonToQueryString,
+  jsonToToml,
+  jsonToTsv,
+  jsonToXml,
+  jsonToYaml,
+  minifyJson,
+} from "@polyconv/json";
+import { tomlToJson } from "@polyconv/toml";
 import { ConversionError } from "@polyconv/core";
 
 interface ConvertOptions {
+  from?: string;
   to?: string;
   output?: string;
   pretty?: boolean;
   indent?: string;
   rootName?: string;
   sortKeys?: boolean;
+  allowJsonUtilityTarget?: boolean;
 }
+
+type SourceFormat = "json" | "toml";
 
 export async function convertAction(input: string, options: ConvertOptions): Promise<void> {
   try {
-    // Validate target format
     if (!options.to) {
       throw new Error("Target format is required. Use --to <format>");
     }
 
-    const targetFormat = options.to.toLowerCase();
-    const supportedFormats = ["xml", "yaml", "yml", "toml", "format", "minify"];
+    const sourceFormat = resolveSourceFormat(input, options.from);
+    const targetFormat = normalizeTargetFormat(options.to);
+    const supportedFormats = getSupportedTargetFormats(options.allowJsonUtilityTarget ?? false);
 
     if (!supportedFormats.includes(targetFormat)) {
       throw new Error(
@@ -35,47 +53,12 @@ export async function convertAction(input: string, options: ConvertOptions): Pro
     const pretty = options.pretty ?? false;
 
     // Convert based on target format
-    let output: string;
-
-    switch (targetFormat) {
-      case "xml":
-        output = jsonToXml(inputData, {
-          rootName: options.rootName,
-          pretty,
-          indent,
-        });
-        break;
-
-      case "yaml":
-      case "yml":
-        output = jsonToYaml(inputData, {
-          pretty,
-          indent,
-          sortKeys: options.sortKeys,
-        });
-        break;
-
-      case "toml":
-        output = jsonToToml(inputData, {
-          indent,
-          sortKeys: options.sortKeys,
-        });
-        break;
-
-      case "format":
-        output = formatJson(inputData, {
-          indent,
-          sortKeys: options.sortKeys,
-        });
-        break;
-
-      case "minify":
-        output = minifyJson(inputData);
-        break;
-
-      default:
-        throw new Error(`Unhandled format: ${targetFormat}`);
-    }
+    const output = convertData(inputData, sourceFormat, targetFormat, {
+      indent,
+      pretty,
+      rootName: options.rootName,
+      sortKeys: options.sortKeys,
+    });
 
     // Write output
     await writeOutput(output, options.output);
@@ -97,5 +80,161 @@ export async function convertAction(input: string, options: ConvertOptions): Pro
 
     console.error(`✗ Unknown error occurred`);
     process.exit(1);
+  }
+}
+
+function getSupportedTargetFormats(includeJsonUtilityTargets: boolean): string[] {
+  const targetFormats = [
+    "json",
+    "xml",
+    "yaml",
+    "yml",
+    "toml",
+    "csv",
+    "tsv",
+    "ini",
+    "env",
+    "markdown",
+    "html",
+    "query",
+  ];
+
+  if (includeJsonUtilityTargets) {
+    targetFormats.push("format", "minify");
+  }
+
+  return targetFormats;
+}
+
+function resolveSourceFormat(input: string, requestedFormat?: string): SourceFormat {
+  if (requestedFormat) {
+    const sourceFormat = requestedFormat.toLowerCase();
+
+    if (sourceFormat === "json" || sourceFormat === "toml") {
+      return sourceFormat;
+    }
+
+    throw new Error(`Unsupported source format: ${sourceFormat}. Supported formats: json, toml`);
+  }
+
+  if (input === "-") {
+    throw new Error("Source format is required for stdin. Use --from <format>");
+  }
+
+  const extension = input.split(/[\\/]/).at(-1)?.split(".").at(-1)?.toLowerCase();
+
+  if (extension === "json") {
+    return "json";
+  }
+
+  if (extension === "toml") {
+    return "toml";
+  }
+
+  throw new Error("Could not infer source format from input path. Use --from <format>");
+}
+
+function normalizeTargetFormat(targetFormat: string): string {
+  const normalized = targetFormat.toLowerCase();
+  return normalized === "yml" ? "yaml" : normalized;
+}
+
+function convertData(
+  inputData: string,
+  sourceFormat: SourceFormat,
+  targetFormat: string,
+  options: {
+    indent: number;
+    pretty: boolean;
+    rootName?: string;
+    sortKeys?: boolean;
+  }
+): string {
+  if (sourceFormat === "toml" && targetFormat === "toml") {
+    return inputData;
+  }
+
+  const jsonInput =
+    sourceFormat === "json"
+      ? inputData
+      : tomlToJson(inputData, {
+          indent: options.indent,
+          pretty: false,
+        });
+
+  switch (targetFormat) {
+    case "json":
+    case "format":
+      return sourceFormat === "toml"
+        ? tomlToJson(inputData, {
+            indent: options.indent,
+            pretty: true,
+            sortKeys: options.sortKeys,
+          })
+        : formatJson(jsonInput, {
+            indent: options.indent,
+            sortKeys: options.sortKeys,
+          });
+
+    case "minify":
+      return sourceFormat === "toml" ? tomlToJson(inputData) : minifyJson(jsonInput);
+
+    case "xml":
+      return jsonToXml(jsonInput, {
+        rootName: options.rootName,
+        pretty: options.pretty,
+        indent: options.indent,
+      });
+
+    case "yaml":
+      return jsonToYaml(jsonInput, {
+        pretty: options.pretty,
+        indent: options.indent,
+        sortKeys: options.sortKeys,
+      });
+
+    case "toml":
+      return jsonToToml(jsonInput, {
+        indent: options.indent,
+        sortKeys: options.sortKeys,
+      });
+
+    case "csv":
+      return jsonToCsv(jsonInput, {
+        sortKeys: options.sortKeys,
+      });
+
+    case "tsv":
+      return jsonToTsv(jsonInput, {
+        sortKeys: options.sortKeys,
+      });
+
+    case "ini":
+      return jsonToIni(jsonInput, {
+        sortKeys: options.sortKeys,
+      });
+
+    case "env":
+      return jsonToEnv(jsonInput, {
+        sortKeys: options.sortKeys,
+      });
+
+    case "markdown":
+      return jsonToMarkdownTable(jsonInput, {
+        sortKeys: options.sortKeys,
+      });
+
+    case "html":
+      return jsonToHtmlTable(jsonInput, {
+        sortKeys: options.sortKeys,
+      });
+
+    case "query":
+      return jsonToQueryString(jsonInput, {
+        sortKeys: options.sortKeys,
+      });
+
+    default:
+      throw new Error(`Unhandled format: ${targetFormat}`);
   }
 }
