@@ -13,6 +13,8 @@ export function createMinifyCommand(): Command {
     .action(async (input: string, options: MinifyOptions) => {
       await convertAction(input, {
         ...options,
+        allowJsonUtilityTarget: true,
+        from: "json",
         to: "minify",
       });
     });

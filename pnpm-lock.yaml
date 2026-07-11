@@ -41,6 +41,9 @@ importers:
       '@polyconv/json':
         specifier: workspace:*
         version: link:../json
+      '@polyconv/toml':
+        specifier: workspace:*
+        version: link:../toml
       commander:
         specifier: ^13.0.0
         version: 13.1.0

@@ -17,6 +17,8 @@ export function createFormatCommand(): Command {
     .action(async (input: string, options: FormatOptions) => {
       await convertAction(input, {
         ...options,
+        allowJsonUtilityTarget: true,
+        from: "json",
         to: "format",
       });
     });

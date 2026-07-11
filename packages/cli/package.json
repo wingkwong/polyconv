@@ -1,6 +1,6 @@
 {
   "name": "@polyconv/cli",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "description": "CLI for polyconv - convert between data formats",
   "keywords": [
@@ -10,7 +10,14 @@
     "json",
     "xml",
     "yaml",
-    "toml"
+    "toml",
+    "csv",
+    "tsv",
+    "ini",
+    "env",
+    "markdown",
+    "html",
+    "querystring"
   ],
   "author": "WK Wong <wingkwong.code@gmail.com>",
   "repository": {
@@ -48,6 +55,7 @@
   "dependencies": {
     "@polyconv/core": "workspace:*",
     "@polyconv/json": "workspace:*",
+    "@polyconv/toml": "workspace:*",
     "commander": "^13.0.0"
   },
   "devDependencies": {

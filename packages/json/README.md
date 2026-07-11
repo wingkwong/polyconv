@@ -1,6 +1,6 @@
 # @polyconv/json
 
-JSON conversion and formatting utilities for Polyconv. It converts JSON strings to XML, YAML, or TOML and also formats or minifies JSON.
+JSON conversion and formatting utilities for Polyconv. It converts JSON strings to XML, YAML, TOML, CSV, TSV, INI, ENV, Markdown tables, HTML tables, and URL query strings. It also formats or minifies JSON.
 
 [![npm version][npm-version-src]][npm-version-href]
 [![License][license-src]][license-href]
@@ -18,10 +18,12 @@ This package is ESM-only and requires Node.js 22+.
 - Convert JSON to XML with customizable options
 - Convert JSON to YAML with formatting control
 - Convert JSON to TOML
+- Convert JSON to CSV, TSV, Markdown tables, and HTML tables
+- Convert JSON objects to INI, ENV, and URL query strings
 - Format and minify JSON
 - Tree-shakeable exports
 - Full TypeScript support
-- Built on battle-tested libraries (fast-xml-builder, js-yaml)
+- XML and YAML are built on battle-tested libraries (fast-xml-builder, js-yaml)
 
 ## Usage
 
@@ -84,6 +86,38 @@ const converter = new JsonToTomlConverter();
 const result = converter.convert(json);
 ```
 
+### JSON to CSV / TSV
+
+```typescript
+import { jsonToCsv, jsonToTsv } from "@polyconv/json";
+
+const json = '[{"name":"Alice","age":30},{"name":"Bob","active":true}]';
+
+const csv = jsonToCsv(json);
+const tsv = jsonToTsv(json, { sortKeys: true });
+```
+
+### JSON to Tables
+
+```typescript
+import { jsonToMarkdownTable, jsonToHtmlTable } from "@polyconv/json";
+
+const json = '[{"name":"Alice","status":"active"}]';
+
+const markdown = jsonToMarkdownTable(json);
+const html = jsonToHtmlTable(json);
+```
+
+### JSON to INI / ENV / Query String
+
+```typescript
+import { jsonToEnv, jsonToIni, jsonToQueryString } from "@polyconv/json";
+
+const ini = jsonToIni('{"name":"polyconv","config":{"enabled":true}}');
+const env = jsonToEnv('{"NAME":"polyconv","PORT":3000}');
+const query = jsonToQueryString('{"q":"hello world","tag":["a","b"]}');
+```
+
 ### Format JSON
 
 ```typescript
@@ -143,6 +177,43 @@ interface JsonToTomlOptions {
   sortKeys?: boolean; // Sort object keys (default: false)
 }
 ```
+
+### JSON to CSV / TSV / Markdown / HTML Table
+
+```typescript
+jsonToCsv(input: string, options?: JsonToDelimitedOptions): string
+jsonToTsv(input: string, options?: JsonToDelimitedOptions): string
+jsonToMarkdownTable(input: string, options?: JsonToMarkdownTableOptions): string
+jsonToHtmlTable(input: string, options?: JsonToHtmlTableOptions): string
+
+interface JsonToDelimitedOptions {
+  sortKeys?: boolean; // Sort table headers (default: false)
+}
+```
+
+These table converters accept one plain object or an array of plain objects. Cell values must be strings, numbers, booleans, or `null`.
+
+### JSON to INI / ENV / Query String
+
+```typescript
+jsonToIni(input: string, options?: JsonToIniOptions): string
+jsonToEnv(input: string, options?: JsonToEnvOptions): string
+jsonToQueryString(input: string, options?: JsonToQueryStringOptions): string
+
+interface JsonToIniOptions {
+  sortKeys?: boolean;
+}
+
+interface JsonToEnvOptions {
+  sortKeys?: boolean;
+}
+
+interface JsonToQueryStringOptions {
+  sortKeys?: boolean;
+}
+```
+
+INI and ENV accept top-level objects. Query strings accept scalar values and arrays of scalar values, emitting repeated keys for arrays.
 
 ### Format & Minify
 

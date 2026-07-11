@@ -1,6 +1,6 @@
 {
   "name": "@polyconv/json",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "module",
   "description": "JSON converter for polyconv - convert JSON to XML, YAML, TOML, and more",
   "keywords": [
@@ -9,6 +9,13 @@
     "xml",
     "yaml",
     "toml",
+    "csv",
+    "tsv",
+    "ini",
+    "env",
+    "markdown",
+    "html",
+    "querystring",
     "converter"
   ],
   "author": "WK Wong <wingkwong.code@gmail.com>",
