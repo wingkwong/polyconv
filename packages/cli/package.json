@@ -30,7 +30,7 @@
     "minify-json"
   ],
   "author": "WK Wong <wingkwong.code@gmail.com>",
-  "homepage": "https://github.com/wingkwong/polyconv/tree/develop/packages/cli#readme",
+  "homepage": "https://wingkwong.github.io/polyconv/#package-cli",
   "bugs": {
     "url": "https://github.com/wingkwong/polyconv/issues"
   },
