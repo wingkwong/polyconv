@@ -1,6 +1,6 @@
 # @polyconv/cli
 
-Command-line interface for Polyconv.
+Command-line structured data format conversion for Polyconv. Use the `polyconv` CLI for supported JSON, TOML, YAML, XML, CSV, TSV, INI, ENV, Markdown, HTML, and query string workflows, including conversion, formatting, and minifying.
 
 [![npm version][npm-version-src]][npm-version-href]
 [![License][license-src]][license-href]

@@ -2,17 +2,27 @@
   "name": "@polyconv/toml",
   "version": "0.1.0",
   "type": "module",
-  "description": "TOML converter for polyconv",
+  "description": "TypeScript TOML to JSON converter utilities for Polyconv with pretty output and sorted keys.",
   "keywords": [
     "polyconv",
     "toml",
+    "toml-converter",
+    "toml-to-json",
+    "toml-parser",
     "json",
-    "converter"
+    "converter",
+    "data-conversion",
+    "typescript"
   ],
   "author": "WK Wong <wingkwong.code@gmail.com>",
+  "homepage": "https://github.com/wingkwong/polyconv/tree/develop/packages/toml#readme",
+  "bugs": {
+    "url": "https://github.com/wingkwong/polyconv/issues"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wingkwong/polyconv.git"
+    "url": "https://github.com/wingkwong/polyconv.git",
+    "directory": "packages/toml"
   },
   "license": "MIT",
   "engines": {

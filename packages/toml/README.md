@@ -1,6 +1,6 @@
 # @polyconv/toml
 
-TOML conversion utilities for Polyconv.
+TOML to JSON conversion utilities for Polyconv. Convert TOML strings to JSON from TypeScript with optional pretty output and recursive key sorting.
 
 [![npm version][npm-version-src]][npm-version-href]
 [![License][license-src]][license-href]

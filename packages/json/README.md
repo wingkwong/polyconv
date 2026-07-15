@@ -1,6 +1,6 @@
 # @polyconv/json
 
-JSON conversion and formatting utilities for Polyconv. It converts JSON strings to XML, YAML, TOML, CSV, TSV, INI, ENV, Markdown tables, HTML tables, and URL query strings. It also formats or minifies JSON.
+TypeScript JSON converter and formatting utilities for Polyconv. Convert JSON strings to XML, YAML, TOML, CSV, TSV, INI, ENV, Markdown tables, HTML tables, and URL query strings, or format and minify JSON.
 
 [![npm version][npm-version-src]][npm-version-href]
 [![License][license-src]][license-href]
