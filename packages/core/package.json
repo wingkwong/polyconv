@@ -1,17 +1,29 @@
 {
   "name": "@polyconv/core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
-  "description": "Core types and utilities for polyconv converters",
+  "description": "Core TypeScript converter utilities, types, errors, and validation helpers for building Polyconv data format libraries.",
   "keywords": [
     "polyconv",
     "converter",
-    "types"
+    "converter-utils",
+    "data-conversion",
+    "data-format",
+    "typescript",
+    "types",
+    "validation",
+    "json-validation",
+    "conversion-error"
   ],
   "author": "WK Wong <wingkwong.code@gmail.com>",
+  "homepage": "https://wingkwong.github.io/polyconv/#package-core",
+  "bugs": {
+    "url": "https://github.com/wingkwong/polyconv/issues"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wingkwong/polyconv.git"
+    "url": "https://github.com/wingkwong/polyconv.git",
+    "directory": "packages/core"
   },
   "license": "MIT",
   "engines": {

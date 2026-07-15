@@ -1,10 +1,12 @@
 <br>
 <p align="center">
-<img width="250" height="250" alt="polyconv" src="https://github.com/user-attachments/assets/5242709b-8f13-40f0-a99e-2469566d9bb8" />
+  <a href="https://wingkwong.github.io/polyconv/">
+    <img width="250" height="250" alt="polyconv" src="https://github.com/user-attachments/assets/5242709b-8f13-40f0-a99e-2469566d9bb8" />
+  </a>
 </p>
 
 <p align="center">
-A modular toolkit for converting and formatting structured data from the command line or TypeScript.
+Polyconv is a modular TypeScript toolkit for structured data format conversion from the command line or library APIs. It provides focused packages for working with JSON, TOML, YAML, XML, CSV, TSV, INI, ENV, Markdown, HTML, and URL query string formats.
 </p>
 
 <p align="center">
@@ -14,8 +16,24 @@ A modular toolkit for converting and formatting structured data from the command
 <a href="https://www.npmjs.com/package/@polyconv/cli" target="__blank"><img src="https://img.shields.io/npm/v/@polyconv/cli?color=FFC300&label=cli" alt="@polyconv/cli version"></a>
 </p>
 
+## Supported Conversions
+
+| Source | Target                 | CLI             | TypeScript library |
+| ------ | ---------------------- | --------------- | ------------------ |
+| JSON   | XML                    | `@polyconv/cli` | `@polyconv/json`   |
+| JSON   | YAML                   | `@polyconv/cli` | `@polyconv/json`   |
+| JSON   | TOML                   | `@polyconv/cli` | `@polyconv/json`   |
+| JSON   | CSV / TSV              | `@polyconv/cli` | `@polyconv/json`   |
+| JSON   | INI / ENV              | `@polyconv/cli` | `@polyconv/json`   |
+| JSON   | Markdown / HTML tables | `@polyconv/cli` | `@polyconv/json`   |
+| JSON   | URL query string       | `@polyconv/cli` | `@polyconv/json`   |
+| TOML   | JSON                   | `@polyconv/cli` | `@polyconv/toml`   |
+
 ## Features
 
+- Focused converters for structured data formats including JSON, TOML, YAML, XML, CSV, TSV, INI, ENV, Markdown, HTML, and query strings
+- CLI and TypeScript library APIs for supported conversion paths
+- JSON formatting and minifying
 - Fast ESM packages built with tsup and esbuild
 - Modular package layout so consumers can install only what they need
 - TypeScript declarations for public APIs
@@ -24,7 +42,7 @@ A modular toolkit for converting and formatting structured data from the command
 
 ## Packages
 
-- [@polyconv/cli](packages/cli) - Command-line interface for JSON conversion, formatting, and minifying
+- [@polyconv/cli](packages/cli) - Command-line interface for supported conversions, formatting, and minifying
 - [@polyconv/core](packages/core) - Core types, errors, and validation helpers for converters
 - [@polyconv/json](packages/json) - JSON converters and JSON formatting utilities
 - [@polyconv/toml](packages/toml) - TOML converter package
@@ -143,7 +161,7 @@ polyconv/
 ├── packages/
 │   ├── cli/         # Command-line interface
 │   ├── core/        # Core types and utilities
-│   ├── json/        # JSON converter
+│   ├── json/        # JSON conversion package
 │   ├── toml/        # TOML converter package
 │   └── standard/    # Shared TypeScript configs
 ├── turbo.json       # Turborepo configuration

@@ -1,6 +1,6 @@
 # @polyconv/core
 
-Core types, errors, and validation helpers for building Polyconv.
+TypeScript converter utilities for building Polyconv-compatible libraries, including core types, conversion errors, and validation helpers.
 
 [![npm version][npm-version-src]][npm-version-href]
 [![License][license-src]][license-href]
