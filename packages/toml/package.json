@@ -1,6 +1,6 @@
 {
   "name": "@polyconv/toml",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "TypeScript TOML to JSON converter utilities for Polyconv with pretty output and sorted keys.",
   "keywords": [

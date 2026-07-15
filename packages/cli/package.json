@@ -1,6 +1,6 @@
 {
   "name": "@polyconv/cli",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "type": "module",
   "description": "Command-line structured data format converter for Polyconv, with JSON, TOML, YAML, XML, CSV, TSV, INI, ENV, Markdown, HTML, and query string workflows.",
   "keywords": [

@@ -1,6 +1,6 @@
 {
   "name": "@polyconv/core",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "description": "Core TypeScript converter utilities, types, errors, and validation helpers for building Polyconv data format libraries.",
   "keywords": [
