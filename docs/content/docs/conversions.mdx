@@ -1,0 +1,48 @@
+---
+title: Conversions
+description: Supported public conversion paths in the current Polyconv packages.
+---
+
+Polyconv exposes focused converters rather than a single all-format package. The current package APIs cover JSON output formats and TOML to JSON.
+
+| Source | Target | CLI | TypeScript library |
+| --- | --- | --- | --- |
+| JSON | XML | `@polyconv/cli` | `@polyconv/json` |
+| JSON | YAML | `@polyconv/cli` | `@polyconv/json` |
+| JSON | TOML | `@polyconv/cli` | `@polyconv/json` |
+| JSON | CSV / TSV | `@polyconv/cli` | `@polyconv/json` |
+| JSON | INI / ENV | `@polyconv/cli` | `@polyconv/json` |
+| JSON | Markdown / HTML tables | `@polyconv/cli` | `@polyconv/json` |
+| JSON | URL query string | `@polyconv/cli` | `@polyconv/json` |
+| TOML | JSON | `@polyconv/cli` | `@polyconv/toml` |
+
+## JSON Outputs
+
+`@polyconv/json` converts JSON strings to XML, YAML, TOML, CSV, TSV, INI, ENV, Markdown tables, HTML tables, and URL query strings. It also formats and minifies JSON.
+
+```typescript
+import {
+  formatJson,
+  jsonToCsv,
+  jsonToQueryString,
+  jsonToToml,
+  jsonToXml,
+  jsonToYaml,
+} from "@polyconv/json";
+```
+
+## TOML Output
+
+`@polyconv/toml` converts TOML strings to JSON with optional pretty output and recursive key sorting.
+
+```typescript
+import { tomlToJson } from "@polyconv/toml";
+```
+
+## Input Contracts
+
+JSON helpers accept JSON as a string and throw `ConversionError` for invalid or empty input.
+
+Table converters accept one plain object or an array of plain objects. Cell values must be strings, numbers, booleans, or `null`.
+
+INI and ENV accept top-level objects. Query strings accept scalar values and arrays of scalar values, emitting repeated keys for arrays.

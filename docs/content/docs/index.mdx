@@ -1,0 +1,40 @@
+---
+title: Polyconv
+description: A modular TypeScript toolkit and CLI for structured data format conversion.
+---
+
+Polyconv is a modular structured data format conversion toolkit for JSON, TOML, YAML, XML, CSV, TSV, INI, ENV, Markdown, HTML, and URL query string workflows.
+
+It provides focused packages instead of one all-format bundle, so applications can install the conversion surface they need. The CLI uses the same libraries for terminal workflows.
+
+## Install
+
+```bash
+pnpm add -g @polyconv/cli
+pnpm add @polyconv/json @polyconv/toml
+```
+
+## First Conversion
+
+```bash
+polyconv convert input.json --to yaml --pretty
+polyconv convert input.toml --to json --output output.json
+```
+
+## Core Facts
+
+| Area | Details |
+| --- | --- |
+| Runtime | Node.js 22+ |
+| Module format | ESM |
+| Language | TypeScript |
+| Repository | [wingkwong/polyconv](https://github.com/wingkwong/polyconv) |
+| npm | [@polyconv packages](https://www.npmjs.com/search?q=%40polyconv) |
+| License | MIT |
+
+## What To Read Next
+
+- [Quick Start](/quick-start) for installation and first commands.
+- [Conversions](/conversions) for the supported public conversion paths.
+- [CLI](/cli) for command options and stdin/stdout usage.
+- [TypeScript](/typescript) for library examples.

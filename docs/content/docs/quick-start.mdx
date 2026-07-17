@@ -1,0 +1,58 @@
+---
+title: Quick Start
+description: Install Polyconv and run your first CLI or TypeScript conversion.
+---
+
+## Requirements
+
+- Node.js 22+
+- pnpm for the examples below
+
+Packages are ESM-only.
+
+## Install The CLI
+
+```bash
+pnpm add -g @polyconv/cli
+```
+
+Use `pnpx` when you do not want a global install:
+
+```bash
+pnpx @polyconv/cli convert --help
+```
+
+## Convert A File
+
+```bash
+polyconv convert input.json --to yaml --pretty --output output.yaml
+polyconv convert input.json --to xml --root-name package --output output.xml
+polyconv convert input.toml --to json --output output.json
+```
+
+## Install Library Packages
+
+```bash
+pnpm add @polyconv/json
+pnpm add @polyconv/toml
+```
+
+## Use A Library
+
+```typescript
+import { jsonToYaml } from "@polyconv/json";
+
+const yaml = jsonToYaml('{"name":"polyconv","version":"0.3.1"}', {
+  pretty: true,
+  sortKeys: true,
+});
+```
+
+## Development Setup
+
+```bash
+git clone https://github.com/wingkwong/polyconv.git
+cd polyconv
+pnpm install
+pnpm build
+```

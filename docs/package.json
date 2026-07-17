@@ -1,0 +1,36 @@
+{
+  "name": "@polyconv/docs",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "fumadocs-mdx source.config.ts .source && next build",
+    "start": "next start",
+    "lint": "oxlint app components lib source.config.ts",
+    "typecheck": "fumadocs-mdx source.config.ts .source && tsc --noEmit",
+    "postinstall": "fumadocs-mdx source.config.ts .source",
+    "clean": "rm -rf .next .source .turbo"
+  },
+  "dependencies": {
+    "@types/mdx": "^2.0.14",
+    "fumadocs-core": "^16.11.5",
+    "fumadocs-mdx": "^15.2.0",
+    "fumadocs-ui": "^16.11.5",
+    "next": "^16.2.10",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "tailwindcss": "^4.3.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.3",
+    "@types/node": "^24.3.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "oxlint": "^1.72.0",
+    "typescript": "^6.0.3"
+  }
+}

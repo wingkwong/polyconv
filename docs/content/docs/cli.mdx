@@ -1,0 +1,70 @@
+---
+title: CLI
+description: Convert, format, and minify structured data from the terminal.
+---
+
+The `polyconv` CLI accepts files or stdin, infers JSON and TOML from filenames, and writes to stdout unless an output path is provided.
+
+## Install
+
+```bash
+pnpm add -g @polyconv/cli
+```
+
+## Convert
+
+```bash
+polyconv convert <input> [options]
+```
+
+Options:
+
+| Option | Description |
+| --- | --- |
+| `-f, --from <format>` | Source format: `json` or `toml`. Required for stdin. |
+| `-t, --to <format>` | Target format. Required. |
+| `-o, --output <file>` | Output file path. Defaults to stdout. |
+| `-p, --pretty` | Pretty print supported outputs such as XML and YAML. |
+| `-i, --indent <number>` | Indentation size for supported formatted outputs. |
+| `--root-name <name>` | Root element name for XML. |
+| `--sort-keys` | Sort object keys alphabetically. |
+
+Target formats: `json`, `xml`, `yaml`, `yml`, `toml`, `csv`, `tsv`, `ini`, `env`, `markdown`, `html`, and `query`.
+
+## Examples
+
+```bash
+polyconv convert data.json --to csv --output data.csv
+polyconv convert data.json --to markdown --sort-keys
+polyconv convert data.json --to xml --root-name users --pretty --indent 4
+polyconv convert config.toml --to json --output config.json
+```
+
+## Stdin And Stdout
+
+```bash
+cat data.json | polyconv convert - --from json --to yaml
+cat config.toml | polyconv convert - --from toml --to json
+curl https://api.example.com/data.json | polyconv convert - --from json --to yaml | less
+```
+
+## Format JSON
+
+```bash
+polyconv format input.json --indent 2 --sort-keys --output formatted.json
+cat input.json | polyconv format - --sort-keys
+```
+
+## Minify JSON
+
+```bash
+polyconv minify input.json --output minified.json
+cat large.json | polyconv minify - > small.json
+```
+
+## Exit Codes
+
+| Code | Meaning |
+| --- | --- |
+| `0` | Success |
+| `1` | Error, including conversion failure or invalid input |

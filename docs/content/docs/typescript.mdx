@@ -1,0 +1,74 @@
+---
+title: TypeScript
+description: Use Polyconv's focused ESM packages in Node.js 22+ applications.
+---
+
+Install only the conversion surface you need. Packages ship TypeScript declarations and tree-shakeable exports.
+
+## JSON Converters
+
+```typescript
+import {
+  formatJson,
+  jsonToCsv,
+  jsonToQueryString,
+  jsonToToml,
+  jsonToXml,
+  jsonToYaml,
+} from "@polyconv/json";
+
+const input = '{"name":"polyconv","version":"0.3.1"}';
+
+const xml = jsonToXml(input, { rootName: "package", pretty: true });
+const yaml = jsonToYaml(input, { pretty: true, sortKeys: true });
+const toml = jsonToToml(input, { sortKeys: true });
+const csv = jsonToCsv('[{"name":"polyconv","version":"0.3.1"}]');
+const query = jsonToQueryString('{"q":"polyconv","tag":["json","cli"]}');
+const formatted = formatJson(input, { indent: 2, sortKeys: true });
+```
+
+## TOML To JSON
+
+```typescript
+import { tomlToJson } from "@polyconv/toml";
+
+const toml = 'name = "polyconv"\n\n[config]\nenabled = true\n';
+
+const json = tomlToJson(toml, {
+  pretty: true,
+  indent: 2,
+  sortKeys: true,
+});
+```
+
+## Converter Classes
+
+Converter classes expose conversion results with format metadata.
+
+```typescript
+import { JsonToXmlConverter } from "@polyconv/json";
+
+const converter = new JsonToXmlConverter();
+const result = converter.convert('{"name":"polyconv"}', { pretty: true });
+
+console.log(result.data);
+console.log(result.format);
+```
+
+## Error Handling
+
+```typescript
+import { ConversionError } from "@polyconv/core";
+import { jsonToXml } from "@polyconv/json";
+
+try {
+  const xml = jsonToXml("{bad");
+  console.log(xml);
+} catch (error) {
+  if (error instanceof ConversionError) {
+    console.error(error.toString());
+    console.error(error.sourceFormat);
+    console.error(error.targetFormat);
+  }
+}
+```

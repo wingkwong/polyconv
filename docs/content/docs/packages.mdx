@@ -1,0 +1,45 @@
+---
+title: Packages
+description: Install the Polyconv package that matches your workflow.
+---
+
+## Package Overview
+
+| Package | Purpose | npm | Source |
+| --- | --- | --- | --- |
+| `@polyconv/cli` | Command-line conversion, formatting, and minifying for supported formats. | [npm](https://www.npmjs.com/package/@polyconv/cli) | [source](https://github.com/wingkwong/polyconv/tree/develop/packages/cli) |
+| `@polyconv/core` | Core types, errors, and validation helpers for converter packages. | [npm](https://www.npmjs.com/package/@polyconv/core) | [source](https://github.com/wingkwong/polyconv/tree/develop/packages/core) |
+| `@polyconv/json` | JSON conversion utilities for XML, YAML, TOML, CSV, TSV, INI, ENV, tables, and query strings. | [npm](https://www.npmjs.com/package/@polyconv/json) | [source](https://github.com/wingkwong/polyconv/tree/develop/packages/json) |
+| `@polyconv/toml` | TOML to JSON conversion utilities with pretty output and recursive key sorting. | [npm](https://www.npmjs.com/package/@polyconv/toml) | [source](https://github.com/wingkwong/polyconv/tree/develop/packages/toml) |
+
+## `@polyconv/cli`
+
+```bash
+pnpm add -g @polyconv/cli
+```
+
+Use this package for terminal conversion, formatting, and minifying workflows.
+
+## `@polyconv/json`
+
+```bash
+pnpm add @polyconv/json
+```
+
+Use this package for JSON to XML, YAML, TOML, CSV, TSV, INI, ENV, Markdown table, HTML table, and URL query string conversions.
+
+## `@polyconv/toml`
+
+```bash
+pnpm add @polyconv/toml
+```
+
+Use this package for TOML to JSON conversion.
+
+## `@polyconv/core`
+
+```bash
+pnpm add @polyconv/core
+```
+
+Use this package when building Polyconv-compatible converters or when you need the shared `ConversionError` and validation helpers.
