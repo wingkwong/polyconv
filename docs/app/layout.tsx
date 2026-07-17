@@ -1,5 +1,6 @@
 import "./global.css";
 
+import { Analytics } from "@vercel/analytics/next";
 import { RootProvider } from "fumadocs-ui/provider/next";
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
@@ -55,6 +56,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareStructuredData) }}
         />
         <RootProvider>{children}</RootProvider>
+        <Analytics />
       </body>
     </html>
   );
